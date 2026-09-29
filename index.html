@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Animated Heart</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* GOOGLE STYLE SCREEN */
+
+        .google-screen {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            width: 100%;
+            height: 60px;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            padding-right: 30px;
+            gap: 25px;
+
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* GOOGLE LOGO */
+
+        .google-logo {
+            margin-top: 100px;
+
+            font-size: 70px;
+            font-weight: bold;
+            letter-spacing: -5px;
+        }
+
+        .blue {
+            color: #4285F4;
+        }
+
+        .red {
+            color: #EA4335;
+        }
+
+        .yellow {
+            color: #FBBC05;
+        }
+
+        .green {
+            color: #34A853;
+        }
+
+        /* SEARCH BOX */
+
+        .search-box {
+            width: 550px;
+            height: 48px;
+
+            border: 1px solid #dfe1e5;
+            border-radius: 25px;
+
+            margin-top: 25px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 20px;
+
+            box-shadow: 0 1px 6px rgba(32,33,36,.15);
+        }
+
+        .search-icon {
+            font-size: 20px;
+            color: #777;
+        }
+
+        .search-text {
+            margin-left: 15px;
+            color: #777;
+        }
+
+        /* HEART AREA */
+
+        .heart-area {
+            position: relative;
+
+            width: 500px;
+            height: 400px;
+
+            margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* BIG HEART */
+
+        .heart {
+            position: relative;
+
+            width: 180px;
+            height: 180px;
+
+            background: #ff1744;
+
+            transform: rotate(-45deg);
+
+            animation: heartbeat 1s infinite;
+
+            box-shadow:
+                0 0 20px #ff1744,
+                0 0 40px rgba(255,23,68,.6),
+                0 0 70px rgba(255,23,68,.4);
+
+            z-index: 5;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: #ff1744;
+
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -90px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 90px;
+        }
+
+        /* HEARTBEAT ANIMATION */
+
+        @keyframes heartbeat {
+
+            0% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            15% {
+                transform: rotate(-45deg) scale(1.18);
+            }
+
+            30% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            45% {
+                transform: rotate(-45deg) scale(1.15);
+            }
+
+            60% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+        }
+
+        /* SMALL FLOATING HEARTS */
+
+        .small-heart {
+            position: absolute;
+
+            color: #ff4081;
+
+            font-size: 35px;
+
+            animation: floatHeart 4s linear infinite;
+
+            opacity: 0;
+        }
+
+        .heart1 {
+            left: 50px;
+            bottom: 50px;
+            animation-delay: 0s;
+        }
+
+        .heart2 {
+            left: 150px;
+            bottom: 20px;
+            animation-delay: 1s;
+        }
+
+        .heart3 {
+            right: 100px;
+            bottom: 30px;
+            animation-delay: 2s;
+        }
+
+        .heart4 {
+            right: 40px;
+            bottom: 70px;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform: translateY(50px) scale(.5);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: .8;
+            }
+
+            100% {
+                transform: translateY(-300px) scale(1.3);
+                opacity: 0;
+            }
+
+        }
+
+        /* TEXT BELOW HEART */
+
+        .love-text {
+            position: absolute;
+
+            bottom: 0;
+
+            width: 100%;
+
+            text-align: center;
+
+            font-size: 25px;
+
+            color: #ff1744;
+
+            font-weight: bold;
+
+            animation: textGlow 1.5s infinite alternate;
+        }
+
+        @keyframes textGlow {
+
+            from {
+                opacity: .6;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            margin-top: 10px;
+
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+
+            padding: 10px 18px;
+
+            background: #f8f9fa;
+
+            border: 1px solid #f8f9fa;
+
+            border-radius: 4px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            border: 1px solid #dadce0;
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            .google-logo {
+                font-size: 50px;
+                margin-top: 70px;
+            }
+
+            .search-box {
+                width: 90%;
+            }
+
+            .heart-area {
+                width: 100%;
+            }
+
+            .heart {
+                width: 130px;
+                height: 130px;
+            }
+
+            .heart::before,
+            .heart::after {
+                width: 130px;
+                height: 130px;
+            }
+
+            .heart::before {
+                top: -65px;
+            }
+
+            .heart::after {
+                left: 65px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="google-screen">
+
+        <!-- TOP NAVIGATION -->
+
+        <div class="top-bar">
+            <a href="#">Gmail</a>
+            <a href="#">Images</a>
+            <span>⋮⋮⋮</span>
+        </div>
+
+
+        <!-- GOOGLE LOGO -->
+
+        <div class="google-logo">
+
+            <span class="blue">G</span>
+            <span class="red">o</span>
+            <span class="yellow">o</span>
+            <span class="blue">g</span>
+            <span class="green">l</span>
+            <span class="red">e</span>
+
+        </div>
+
+
+        <!-- SEARCH BOX -->
+
+        <div class="search-box">
+
+            <span class="search-icon">⌕</span>
+
+            <span class="search-text">
+                Search Google or type a URL
+            </span>
+
+        </div>
+
+
+        <!-- HEART -->
+
+        <div class="heart-area">
+
+            <div class="heart"></div>
+
+
+            <!-- FLOATING HEARTS -->
+
+            <div class="small-heart heart1">♥</div>
+
+            <div class="small-heart heart2">♥</div>
+
+            <div class="small-heart heart3">♥</div>
+
+            <div class="small-heart heart4">♥</div>
+
+
+            <!-- TEXT -->
+
+            <div class="love-text">
+                ❤️ Made with Love ❤️
+            </div>
+
+        </div>
+
+
+        <!-- GOOGLE BUTTONS -->
+
+        <div class="buttons">
+
+            <button>
+                Google Search
+            </button>
+
+            <button>
+                I'm Feeling Lucky
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* CLICK HEART EFFECT */
+
+        const heart = document.querySelector(".heart");
+
+        heart.addEventListener("click", function() {
+
+            alert("❤️ Love!");
+
+        });
+
+
+        /* CREATE EXTRA FLOATING HEARTS */
+
+        function createHeart() {
+
+            const newHeart = document.createElement("div");
+
+            newHeart.innerHTML = "♥";
+
+            newHeart.style.position = "absolute";
+
+            newHeart.style.color = "#ff4081";
+
+            newHeart.style.fontSize =
+                Math.random() * 25 + 20 + "px";
+
+            newHeart.style.left =
+                Math.random() * 90 + "%";
+
+            newHeart.style.bottom = "0px";
+
+            newHeart.style.opacity = "0";
+
+            newHeart.style.transition =
+                "all 4s linear";
+
+            document
+                .querySelector(".heart-area")
+                .appendChild(newHeart);
+
+
+            setTimeout(function() {
+
+                newHeart.style.transform =
+                    "translateY(-350px)";
+
+                newHeart.style.opacity = "1";
+
+            }, 100);
+
+
+            setTimeout(function() {
+
+                newHeart.remove();
+
+            }, 4000);
+
+        }
+
+
+        /* CREATE HEART EVERY 700ms */
+
+        setInterval(createHeart, 700);
+
+    </script>
+
+</body>
+</html>
